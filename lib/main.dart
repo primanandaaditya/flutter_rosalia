@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'helpers/str.dart';
-import 'views/mobileVersion.dart';
+import 'views/login.dart';
 
-void main(){
+void main() {
   runApp(
     MaterialApp(
       title: Str.namaPerusahaan,
-      home: Main(),
+      home: Utama(),
     )
   );
 }
