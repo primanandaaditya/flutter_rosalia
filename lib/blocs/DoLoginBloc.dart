@@ -19,7 +19,6 @@ class DoLoginBloc extends Bloc<DoLoginEvent, DoLoginState>{
         assert(authBloc != null);
 
   @override
-  // TODO: implement initialState
   DoLoginState get initialState => DoLoginInitial();
 
   @override

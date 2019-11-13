@@ -1,0 +1,142 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_rosa/helpers/str.dart';
+import 'package:flutter_rosa/helpers/url.dart';
+import 'package:flutter_rosa/models/login/LoginRequestModel.dart';
+import 'package:flutter_rosa/models/login/LoginResponseModel.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+
+final _formKey = GlobalKey<FormState>();
+TextEditingController tcMemberID;
+TextEditingController tcPassword;
+
+class Utama extends StatefulWidget {
+  @override
+  _UtamaState createState() => _UtamaState();
+}
+
+class _UtamaState extends State<Utama> {
+  @override
+  Widget build(BuildContext context) {
+
+    LoginRequestModel loginRequestModel=LoginRequestModel(memberId:"88955969", password: "UL8OoILL");
+
+
+    return
+       Scaffold(
+
+        body: Form(
+          key: _formKey,
+          child: Container(
+            decoration: BoxDecoration(
+              gradient: LinearGradient(
+                begin: Alignment.bottomCenter,
+                end: Alignment.topCenter,
+                colors: [Colors.blue[700],Colors.blue[300]]
+              )
+            ),
+            padding: EdgeInsets.all(20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+
+                  TextFormField(
+                    validator: (val){
+                      if(val.isEmpty){
+                        return Str.validatorRequired;
+                      }
+                      return null;
+                    },
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontFamily: 'Muli',
+
+                    ),
+                    controller: tcMemberID,
+
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.people, color: Colors.white, ),
+                      labelText: Str.memberID,
+                      labelStyle: TextStyle(color: Colors.white),
+                      enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                      ),
+              focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.white),
+                   ),
+                    ),
+                    ),
+
+                  TextFormField(
+                    validator: (val){
+                      if(val.isEmpty){
+                        return Str.validatorRequired;
+                      }
+                      return null;
+                    },
+                    style: TextStyle(color: Colors.white, fontFamily: "Muli"),
+                    obscureText: true,
+                    controller: tcPassword,
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.vpn_key, color: Colors.white,),
+                      labelText: Str.password,
+                      labelStyle: TextStyle(color: Colors.white),
+                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
+                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))
+                    ),
+                    ),
+
+                  SizedBox(
+                    width: 10,
+                    height: 30,
+                  ),
+
+                  SizedBox(
+                    width: 250,
+                    child: RaisedButton(
+                     color: Colors.white,
+                     elevation: 6,
+                     textColor: Colors.red[700],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: new BorderRadius.circular(18.0),
+                        side: BorderSide(color: Colors.white)
+                      ),
+
+                      child: Text(Str.login, style: TextStyle(fontFamily: 'Muli'),),
+
+                    onPressed: (){
+                       if (_formKey.currentState.validate()){
+                         doLogin(loginRequestModel.toJson()).then((hasil){
+                           if (hasil.data.success==false){
+                             debugPrint(Str.login_gagal);
+                           }else{
+                             debugPrint(Str.login_ok);
+                           }
+                         });
+                       }
+
+                    }
+              ),
+
+                  ),
+
+
+                ],
+              ),
+            ),
+          ),
+    );
+  }
+}
+
+
+
+Future<LoginResponseModel> doLogin(Map body) async {
+  final response = await http.post(Url.base+Url.login, body: body);
+  if (response.statusCode == 200) {
+    return LoginResponseModel.fromJson(json.decode(response.body));
+  } else {
+    throw Exception('Failed to load post');
+  }
+}
