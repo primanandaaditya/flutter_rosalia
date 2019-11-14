@@ -17,4 +17,34 @@ class CSS {
     );
   }
 
+  TextStyle judulPutih(){
+    return TextStyle(
+        color: Colors.white,
+        fontFamily: 'Muli',
+      fontWeight: FontWeight.bold,
+        fontSize: 20
+    );
+  }
+
+  TextStyle teksMerah(){
+    return TextStyle(
+        color: Colors.red,
+        fontFamily: 'Muli'
+    );
+  }
+
+  UnderlineInputBorder garisBawahPutih(){
+    return UnderlineInputBorder(
+      borderSide: BorderSide(color: Colors.white),
+    );
+  }
+
+  RoundedRectangleBorder tombolRounded({Color warna, double tebal}){
+    return RoundedRectangleBorder(
+        borderRadius: new BorderRadius.circular(tebal),
+        side: BorderSide(color: warna)
+    );
+
+  }
+
 }

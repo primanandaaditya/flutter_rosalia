@@ -9,6 +9,14 @@ class Str{
   static String memberID="Member ID";
   static String password="Password";
   static String masuk="MASUK";
+  static String submit="SUBMIT";
+  static String email="Email";
+  static String emailIsRequired=email+" is required";
+  static String emailNotValid="Invalid " + email;
 
   static String validatorRequired="Mohon diisi";
+
+  static String forgotPassword="FORGOT PASSWORD";
+  static String forgotPasswordSuccess="Password sudah dikirimkan. Mohon periksa email Anda";
+  static String forgotPasswordFail="Error! Password tidak terkirim. Mohon ulangi";
 }

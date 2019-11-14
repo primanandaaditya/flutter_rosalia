@@ -41,14 +41,23 @@ class _UtamaState extends State<Utama> implements LoginInterface {
               mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[
 
+
+
+                Icon(
+                  Icons.assignment_ind,
+                  color: Colors.white,
+                  size: 100,
+                ),
+
                 Text(Str.login, style: TextStyle(
-                  fontSize: 40,
+                  fontFamily: 'Muli',
+                  fontSize: 30,
                   fontWeight: FontWeight.bold,
                   color: Colors.white
                 ),),
 
                 Padding(
-                  padding: EdgeInsets.only(bottom: 20),
+                  padding: EdgeInsets.only(bottom: 40),
                 ),
                 
                 Visibility(
