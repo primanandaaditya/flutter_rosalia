@@ -19,4 +19,11 @@ class Str{
   static String forgotPassword="FORGOT PASSWORD";
   static String forgotPasswordSuccess="Password sudah dikirimkan. Mohon periksa email Anda";
   static String forgotPasswordFail="Error! Password tidak terkirim. Mohon ulangi";
+
+  static String signUp="SIGN UP";
+  static String tanggalLahir="Tanggal lahir";
+  static String nomorHP="Nomor HP";
+  static String nama="Nama";
+  static String resultSignUp="Terima kasih telah mendaftar. Silakan cek email Anda";
+
 }

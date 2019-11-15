@@ -4,4 +4,5 @@ class Url{
   static String version = "mobile/getNumber";
   static String login = "member/login";
   static String forgotPassword ="register/forgotpwd";
+  static String signUp= "mobile/getmysignUPmember";
 }
