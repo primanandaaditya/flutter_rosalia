@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'helpers/str.dart';
-import 'views/SignupScreen.dart';
+import 'views/CarterScreen.dart';
 
 void main() {
   runApp(

@@ -11,8 +11,9 @@ class Str{
   static String masuk="MASUK";
   static String submit="SUBMIT";
   static String email="Email";
-  static String emailIsRequired=email+" is required";
-  static String emailNotValid="Invalid " + email;
+  static String emailIsRequired=email+" dibutuhkan";
+  static String emailNotValid= email + " salah penulisan";
+  static String error = "Error";
 
   static String validatorRequired="Mohon diisi";
 
@@ -25,5 +26,11 @@ class Str{
   static String nomorHP="Nomor HP";
   static String nama="Nama";
   static String resultSignUp="Terima kasih telah mendaftar. Silakan cek email Anda";
+
+  static String carterStatusOK="Data telah terkirim. Hubungi agen terdekat Anda";
+  static String carterStatusFaild="Data gagal terkirim. Hubungi agen terdekat Anda";
+  static String carter="CARTER BUS";
+  static String kebutuhanCarter="Kebutuhan carter dan jumlah peserta";
+  
 
 }

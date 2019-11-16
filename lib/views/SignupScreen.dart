@@ -27,11 +27,7 @@ class View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
-
     SignupBloc signupBloc = BlocProvider.of<SignupBloc>(context);
-
-
-
 
     return Container(
       decoration: BoxDecoration(
