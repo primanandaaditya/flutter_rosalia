@@ -31,6 +31,10 @@ class Str{
   static String carterStatusFaild="Data gagal terkirim. Hubungi agen terdekat Anda";
   static String carter="CARTER BUS";
   static String kebutuhanCarter="Kebutuhan carter dan jumlah peserta";
+
+  static String message="SEND MESSAGE";
+  static String pesan="Pesan";
+
   
 
 }

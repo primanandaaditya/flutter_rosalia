@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rosa/helpers/str.dart';
 import 'package:flutter_rosa/helpers/css.dart';
-import 'package:flutter_rosa/viewmodel/LoginViewModel.dart';
-import 'package:flutter_rosa/presenter/LoginPresenter.dart';
-import 'package:flutter_rosa/interfaces/LoginInterface.dart';
+import 'package:flutter_rosa/blocs/LoginBloc.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_rosa/helpers/validator.dart';
+import 'package:flutter_rosa/models/login/LoginResponseModel.dart';
 
 final _formKey = GlobalKey<FormState>();
 
-
-class Utama extends StatefulWidget {
-
-  final LoginPresenter loginPresenter;
-  Utama(this.loginPresenter,{Key key}):super(key:key);
-
+class LoginUtama extends StatelessWidget {
   @override
-  _UtamaState createState() => _UtamaState();
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body:  BlocProvider(builder: (context) => LoginBloc(),
+        child: View(),
+      )
+,
+    );
+  }
 }
 
-class _UtamaState extends State<Utama> implements LoginInterface {
+class View extends StatelessWidget {
 
-  LoginViewModel loginViewModel;
-
+  
 
   @override
   Widget build(BuildContext context) {
 
+    LoginBloc loginBloc = BlocProvider.of<LoginBloc>(context);
 
     return 
        Scaffold(
@@ -49,61 +52,42 @@ class _UtamaState extends State<Utama> implements LoginInterface {
                   size: 100,
                 ),
 
-                Text(Str.login, style: TextStyle(
-                  fontFamily: 'Muli',
-                  fontSize: 30,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white
-                ),),
+                Text(Str.login, style: CSS().judulPutih()),
 
                 Padding(
                   padding: EdgeInsets.only(bottom: 40),
                 ),
                 
-                Visibility(
-                  visible: loginViewModel.isLoginGagal,
-                  child: Text(Str.login_gagal, textAlign: TextAlign.center, style: TextStyle(color: Colors.redAccent),),
-                ),
-
+              
                   TextFormField(
                     validator: (val){
-                      if(val.isEmpty){
-                        return Str.validatorRequired;
-                      }
-                      return null;
+                      return Validator.validateEmpty(val);
                     },
                     style: CSS().teksPutih(),
-                    controller: loginViewModel.tecMemberID,
-                    
+                    controller: loginBloc.tcMemberID,
+                    autofocus: true,
                     decoration: InputDecoration(
                       icon: Icon(Icons.people, color: Colors.white, ),
                       labelText: Str.memberID,
-                      labelStyle: TextStyle(color: Colors.white),
-                      enabledBorder: UnderlineInputBorder(      
-                        borderSide: BorderSide(color: Colors.white),   
-                      ),  
-                      focusedBorder: UnderlineInputBorder(
-                        borderSide: BorderSide(color: Colors.white),
-                      ),  
+                      labelStyle: CSS().teksPutih(),
+                      enabledBorder: CSS().garisBawahPutih(),
+                      focusedBorder: CSS().garisBawahPutih(),
                     ),
                     ),
 
                   TextFormField(
                     validator: (val){
-                      if(val.isEmpty){
-                        return Str.validatorRequired;
-                      }
-                      return null;
+                      return Validator.validateEmpty(val);
                     },
                     style: CSS().teksPutih(),
                     obscureText: true,
-                    controller: loginViewModel.tecPassword,
+                    controller: loginBloc.tcPassword,
                     decoration: InputDecoration(
                       icon: Icon(Icons.vpn_key, color: Colors.white,),
                       labelText: Str.password,
-                      labelStyle: TextStyle(color: Colors.white),
-                      enabledBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-                      focusedBorder: UnderlineInputBorder(borderSide: BorderSide(color: Colors.white))
+                      labelStyle: CSS().teksPutih(),
+                      enabledBorder: CSS().garisBawahPutih(),
+                      focusedBorder: CSS().garisBawahPutih()
                     ),
                     ),
 
@@ -112,30 +96,38 @@ class _UtamaState extends State<Utama> implements LoginInterface {
                     height: 30,
                   ),
 
-                (loginViewModel.isLoading==false)?
-                  SizedBox(
-                    width: 250,
-                    child: RaisedButton(
-                     color: Colors.deepOrange[900],
-                     elevation: 6,
-                     textColor: Colors.red[700],
-                      shape: RoundedRectangleBorder(
-                        borderRadius: new BorderRadius.circular(18.0),
-                        side: BorderSide(color: Colors.white)
-                      ),
+                  RaisedButton(
+                    color: Colors.deepOrange,
+                    child: Text(Str.login),
+                    textColor: Colors.white,
+                    elevation: 6,
+                    shape: CSS().tombolRounded(warna: Colors.white, tebal: 18),
+                    onPressed: (){
+                      if(_formKey.currentState.validate()){
+                        loginBloc.add(loginBloc.createRequest());
+                      }
+                    },
 
-                      child: Text(Str.login, style:CSS().teksPutih()),
+                  ),
 
-                       onPressed: (){
-                       if (_formKey.currentState.validate()){
-                         this.widget.loginPresenter.doLogin(context);
-                       }
+                  BlocBuilder<LoginBloc, LoginResponseModel>(
+                    builder: (context, response) {
+
+                      if(response is LoginUninitialized){
+                        return Container();
+                      }else if(response is LoginLoading){
+                        return CircularProgressIndicator(backgroundColor: Colors.white,);
+                      }else if(response is LoginSuccess){
+                        return Text(Str.login_ok,style: CSS().teksPutih(),);
+                      }else if(response is LoginError){
+                        return Text(Str.login_gagal, style: CSS().teksMerah(),);
+                      }
 
                     }
-              )
-                  ):CircularProgressIndicator(
-                  backgroundColor: Colors.white,
-                ),
+                  )
+
+
+                
                 ],
               ),
             ),
@@ -143,32 +135,6 @@ class _UtamaState extends State<Utama> implements LoginInterface {
     );
   }
 
-  @override
-  void refreshData(LoginViewModel loginViewModel) {
-    setState(() {
-      this.loginViewModel=loginViewModel;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    this.widget.loginPresenter.view=this;
-  }
-
-  @override
-  void loginGagal() {
-    setState(() {
-      loginViewModel.selesaiLoginTapiSalah();
-    });
-    debugPrint(Str.login_gagal);
-  }
-
-  @override
-  void loginSukses() {
-    setState(() {
-      loginViewModel.selesaiLoginBenar();
-    });
-    debugPrint(Str.login_ok);
-  }
+ 
+  
 }

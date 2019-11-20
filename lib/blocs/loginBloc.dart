@@ -1,4 +1,5 @@
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_rosa/models/login/LoginRequestModel.dart';
 import 'package:flutter_rosa/models/login/LoginResponseModel.dart';
 import 'package:http/http.dart' as http;
@@ -9,17 +10,32 @@ import 'dart:async';
 
 class LoginBloc extends Bloc<LoginRequestModel,LoginResponseModel>{
 
+  TextEditingController tcMemberID=TextEditingController();
+  TextEditingController tcPassword=TextEditingController();
+
+  LoginRequestModel createRequest(){
+    LoginRequestModel loginRequestModel = LoginRequestModel(memberId: tcMemberID.text,password: tcPassword.text);
+    return loginRequestModel;
+  }
+
   @override
-  LoginResponseModel get initialState => Unknown() ;
+  LoginResponseModel get initialState => LoginUninitialized() ;
 
   @override
   Stream<LoginResponseModel> mapEventToState(LoginRequestModel event) async* {
+    yield LoginLoading();
     try {
 
       LoginResponseModel loginResponseModel = await doLogin(event.toJson());
-      yield loginResponseModel;
+      if(loginResponseModel.data.data==null){
+        yield LoginError();
+      }else{
+        yield LoginSuccess();
+      }
 
-    } catch (_) {}
+    } catch (_) {
+      yield LoginError();
+    }
   }
 
 }
@@ -28,8 +44,8 @@ class LoginBloc extends Bloc<LoginRequestModel,LoginResponseModel>{
 Future<LoginResponseModel> doLogin(Map body) async {
   final response = await http.post(Url.base+Url.login, body: body);
   if (response.statusCode == 200) {
-    return LoginResponseModel.fromJson(json.decode(response.body));
+   return LoginResponseModel.fromJson(json.decode(response.body));
   } else {
-    throw Exception('Failed to load post');
+    return LoginError();
   }
 }

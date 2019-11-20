@@ -21,3 +21,7 @@ class LoginResponseModel {
 class Unknown extends LoginResponseModel{
   
 }
+class LoginUninitialized extends LoginResponseModel{}
+class LoginLoading extends LoginResponseModel{}
+class LoginError extends LoginResponseModel{}
+class LoginSuccess extends LoginResponseModel{}
