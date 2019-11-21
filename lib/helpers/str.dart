@@ -35,6 +35,8 @@ class Str{
   static String message="SEND MESSAGE";
   static String pesan="Pesan";
 
-  
-
+  static String statusError="Status tidak diketahui. Mohon cek lagi nomor booking/HP";
+  static String statusSukses="No. booking telah dikonfirmasi. Silakan check in sesuai jadwal";
+  static String noBooking="Nomor booking";
+  static String cekStatus="CEK STATUS";
 }

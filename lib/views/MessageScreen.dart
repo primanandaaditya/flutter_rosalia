@@ -108,6 +108,8 @@ class View extends StatelessWidget {
                     }else if(response is MessageResponseModel){
                       return Text("Pesan telah terkirim. Terima kasih", style: CSS().teksPutih(),);
 
+                    }else{
+                      return Container();
                     }
                   }
                 )

@@ -121,6 +121,8 @@ class View extends StatelessWidget {
                         return Text(Str.login_ok,style: CSS().teksPutih(),);
                       }else if(response is LoginError){
                         return Text(Str.login_gagal, style: CSS().teksMerah(),);
+                      }else{
+                        return Container();
                       }
 
                     }
