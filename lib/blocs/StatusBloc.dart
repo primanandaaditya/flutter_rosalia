@@ -4,7 +4,6 @@ import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_rosa/models/status/StatusRequestModel.dart';
 import 'package:flutter_rosa/models/status/StatusResponseModel.dart';
-import 'package:flutter_rosa/models/status/StatusResponseModel.dart' as prefix0;
 import 'package:http/http.dart' as http;
 import 'package:flutter_rosa/helpers/url.dart';
 

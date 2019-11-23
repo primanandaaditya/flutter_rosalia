@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rosa/blocs/SignupBloc.dart';
 import 'package:flutter_rosa/helpers/css.dart';
 import 'package:flutter_rosa/helpers/str.dart';
-import 'package:flutter_rosa/models/signup/SignupRequest.dart';
 import 'package:flutter_rosa/models/signup/SignupResponse.dart';
 import 'package:flutter_rosa/helpers/validator.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';

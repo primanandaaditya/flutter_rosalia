@@ -13,7 +13,7 @@ class Str{
   static String email="Email";
   static String emailIsRequired=email+" dibutuhkan";
   static String emailNotValid= email + " salah penulisan";
-  static String error = "Error";
+  static String error = "Error, tidak dapat memuat data";
 
   static String validatorRequired="Mohon diisi";
 
@@ -39,4 +39,6 @@ class Str{
   static String statusSukses="No. booking telah dikonfirmasi. Silakan check in sesuai jadwal";
   static String noBooking="Nomor booking";
   static String cekStatus="CEK STATUS";
+
+
 }

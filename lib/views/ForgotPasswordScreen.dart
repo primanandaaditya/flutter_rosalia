@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rosa/blocs/ForgotPasswordBloc.dart';
 import 'package:flutter_rosa/models/forgotpassword/ForgotPasswordModel.dart';
-import 'package:flutter_rosa/models/forgotpassword/ForgotPasswordRequest.dart';
 import 'package:flutter_rosa/helpers/str.dart';
 import 'package:flutter_rosa/helpers/css.dart';
 import 'package:flutter_rosa/helpers/validator.dart';

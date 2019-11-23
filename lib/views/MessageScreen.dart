@@ -4,7 +4,6 @@ import 'package:flutter_rosa/helpers/css.dart';
 import 'package:flutter_rosa/helpers/str.dart';
 import 'package:flutter_rosa/blocs/MessageBloc.dart';
 import 'package:flutter_rosa/helpers/validator.dart';
-import 'package:flutter_rosa/models/message/MessageRequestModel.dart';
 import 'package:flutter_rosa/models/message/MessageResponseModel.dart';
 
 final _formKey=GlobalKey<FormState>();

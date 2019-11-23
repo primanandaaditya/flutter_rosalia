@@ -5,7 +5,6 @@ import 'package:flutter_rosa/blocs/StatusBloc.dart';
 import 'package:flutter_rosa/helpers/css.dart';
 import 'package:flutter_rosa/helpers/str.dart';
 import 'package:flutter_rosa/helpers/validator.dart';
-import 'package:flutter_rosa/models/status/StatusRequestModel.dart';
 import 'package:flutter_rosa/models/status/StatusResponseModel.dart';
 
 final _formKey=GlobalKey<FormState>();

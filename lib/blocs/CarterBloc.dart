@@ -6,7 +6,6 @@ import 'package:flutter_rosa/helpers/url.dart';
 import 'package:flutter_rosa/models/carter/CarterRequestModel.dart';
 import 'package:flutter_rosa/models/carter/CarterResponseModel.dart';
 import 'package:http/http.dart' as http;
-import 'package:flutter_rosa/helpers/str.dart';
 
 
 class CarterBloc extends Bloc<CarterRequestModel,CarterResponseModel>{

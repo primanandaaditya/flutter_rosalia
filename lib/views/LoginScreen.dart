@@ -96,6 +96,8 @@ class View extends StatelessWidget {
                     height: 30,
                   ),
 
+                
+
                   RaisedButton(
                     color: Colors.deepOrange,
                     child: Text(Str.login),

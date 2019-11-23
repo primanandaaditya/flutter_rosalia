@@ -4,7 +4,6 @@ import 'package:flutter_rosa/blocs/CarterBloc.dart';
 import 'package:flutter_rosa/helpers/css.dart';
 import 'package:flutter_rosa/helpers/str.dart';
 import 'package:flutter_rosa/helpers/validator.dart';
-import 'package:flutter_rosa/models/carter/CarterRequestModel.dart';
 import 'package:flutter_rosa/models/carter/CarterResponseModel.dart';
 
 final _formKey = GlobalKey<FormState>();
