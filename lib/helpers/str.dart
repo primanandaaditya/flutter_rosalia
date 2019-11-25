@@ -40,5 +40,7 @@ class Str{
   static String noBooking="Nomor booking";
   static String cekStatus="CEK STATUS";
 
+  static String filterKelas="Cari bus";
+  static String filterNoResult="No result";
 
 }

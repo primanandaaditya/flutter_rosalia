@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rosa/blocs/BusBloc.dart';
 import 'package:flutter_rosa/helpers/css.dart';
+import 'package:flutter_rosa/helpers/str.dart';
 
 
 class BusUtama extends StatelessWidget {
@@ -11,19 +12,24 @@ class BusUtama extends StatelessWidget {
       body: BlocProvider(builder: (context) => BusBloc(),
         child: View(),
       ) ,
-
     );
   }
 }
 
 
 class View extends StatelessWidget {
+
+  
+  
+
   @override
   Widget build(BuildContext context) {
     BusBloc busBloc = BlocProvider.of<BusBloc>(context);
     busBloc.add(0);
+    
 
-    return Container(
+    return
+     Container(
       padding: EdgeInsets.all(20),
       width: double.infinity,
       height: double.infinity,
@@ -49,40 +55,64 @@ class View extends StatelessWidget {
             
 
           }else{
-            busBloc.createResponse(response);
+            if(response=="filterTime"){
+              debugPrint(response.toString());
+            }else{
+              busBloc.createResponse(response);
+            }
            
-            return ListView.separated(
-              separatorBuilder: (context, index){
-                return Divider(
-                  color: Colors.white,
-                );
-              },
 
-              itemBuilder: (context, index){
-                return ListTile(
-                  leading: CircleAvatar(
-                    foregroundColor: Colors.white,
-                    child: Icon(
-                       Icons.card_travel, 
-                      color: Colors.white
-                    ),
+            return Column(
+              children: <Widget>[
 
+              
+                TextField(
+                  autofocus: true,
+                  controller: busBloc.tcFilter,
+                  onChanged: ((s){
+                    busBloc.add(1);
+                  }),
+                  style: CSS().teksPutih(),
+                  decoration: InputDecoration(
+                    icon: Icon(Icons.search, color: Colors.white,),
+                    enabledBorder: CSS().garisBawahPutih(),
+                    focusedBorder: CSS().garisBawahPutih(),
+                    hintText: Str.filterKelas,
+                    hintStyle: CSS().teksPutih()
                   ),
+                ),
 
-
-                  title: Text(busBloc.listBusModel.busResponseModel.elementAt(index).namaKelas,
-                    style: CSS().teksPutih(),
-                  ),
-                 
-
-                  onTap: () {
-                    debugPrint("Landscape tapped");
+                Expanded(
+                  child: ListView.separated(
+                  separatorBuilder: (context, index){
+                    return Divider(
+                      color: Colors.white,
+                    );
                   },
-                );
-              },
 
-              itemCount: busBloc.listBusModel.busResponseModel.length,
+                  itemBuilder: (context, index){
+                    return ListTile(
+                      leading: CircleAvatar(
+                        foregroundColor: Colors.white,
+                        child: Icon(
+                          Icons.directions_bus,
+                          color: Colors.white
+                        ),
+                      ),
 
+                      title: Text(busBloc.filter.elementAt(index).namaKelas,
+                        style: CSS().teksPutih(),
+                      ),
+                    
+                      onTap: () {
+                        debugPrint(busBloc.filter.elementAt(index).kelasId);
+                      },
+                    );
+                  },
+                  itemCount: busBloc.filter.length,
+                )
+                ),
+              ],
             );
           }
         }
