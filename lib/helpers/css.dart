@@ -17,6 +17,14 @@ class CSS {
     );
   }
 
+  TextStyle teksPutihKecil(){
+    return TextStyle(
+        color: Colors.white30,
+        fontFamily: 'Muli',
+      fontSize: 10
+    );
+  }
+
   TextStyle judulPutih(){
     return TextStyle(
         color: Colors.white,

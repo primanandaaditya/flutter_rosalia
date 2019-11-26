@@ -40,7 +40,13 @@ class Str{
   static String noBooking="Nomor booking";
   static String cekStatus="CEK STATUS";
 
-  static String filterKelas="Cari bus";
-  static String filterNoResult="No result";
+  static const String filterKelas="Cari bus";
+  static const String filterAgen="Cari agen/kota agen";
+
+  static const String filterNoResult="No result";
+  static const String filterLoading="loading";
+  static const String filterError="error";
+  static const String filterBegin="";
+  static const String filterTime="filterTime";
 
 }

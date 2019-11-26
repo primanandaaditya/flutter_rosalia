@@ -9,4 +9,5 @@ class Url{
   static String message="https://rosalia-indah.co.id/web/website/email/kirim2";
   static String status = "mobile/statussearch2";
   static String bus = "mobiledev/getkelas";
+  static String agen = "mobiledev/getagenasal/";
 }
