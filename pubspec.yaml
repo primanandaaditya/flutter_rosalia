@@ -23,6 +23,8 @@ dependencies:
   flutter_bloc: ^1.0.0
   equatable: ^0.6.1
   flutter_datetime_picker: ^1.2.8
+  table_calendar: ^2.2.1
+  intl: ^0.16.0
 
 
   # The following adds the Cupertino Icons font to your application.
