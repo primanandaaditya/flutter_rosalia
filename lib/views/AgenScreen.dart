@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rosa/blocs/AgenBloc.dart';
 import 'package:flutter_rosa/helpers/css.dart';
 import 'package:flutter_rosa/helpers/str.dart';
+import 'package:flutter_rosa/models/agen/ListAgenModel.dart';
 import 'package:flutter_rosa/models/agen/ListAgenRequest.dart';
 
 class AgenUtama extends StatelessWidget {
@@ -116,7 +117,13 @@ class View extends StatelessWidget {
                           ),
 
                           onTap: () {
-                            debugPrint("Landscape tapped");
+                            AgenResponseModel agenResponseModel = AgenResponseModel(
+                              agenId: agenBloc.filter.elementAt(index).agenId,
+                              namaAgen: agenBloc.filter.elementAt(index).namaAgen,
+                              namaKota: agenBloc.filter.elementAt(index).namaKota,
+                              singkatan: agenBloc.filter.elementAt(index).singkatan,
+                            );
+                            Navigator.pop(context, agenResponseModel);
                           },
                         );
                       },

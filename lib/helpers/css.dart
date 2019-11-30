@@ -2,6 +2,15 @@ import 'package:flutter/material.dart';
 
 class CSS {
 
+  AppBar appbarHitam(String judul, IconData icons){
+    return AppBar(
+        elevation: 3,
+        leading: Icon(icons, color: Colors.white,),
+        title: Text(judul, style: CSS().teksPutih(),),
+        backgroundColor: Colors.black
+      );
+  }
+
   LinearGradient gradienLinear(){
     return LinearGradient(
       begin: Alignment.topCenter,

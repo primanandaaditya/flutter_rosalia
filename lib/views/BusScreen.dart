@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rosa/blocs/BusBloc.dart';
 import 'package:flutter_rosa/helpers/css.dart';
 import 'package:flutter_rosa/helpers/str.dart';
+import 'package:flutter_rosa/models/bus/BusResponseModel.dart';
 
 
 class BusUtama extends StatelessWidget {
@@ -18,9 +19,6 @@ class BusUtama extends StatelessWidget {
 
 
 class View extends StatelessWidget {
-
-  
-  
 
   @override
   Widget build(BuildContext context) {
@@ -105,7 +103,12 @@ class View extends StatelessWidget {
                       ),
                     
                       onTap: () {
-                        debugPrint(busBloc.filter.elementAt(index).kelasId);
+                        BusResponseModel busResponseModel = BusResponseModel(
+                          bagasiKg: "",
+                          kelasId: busBloc.filter.elementAt(index).kelasId,
+                          namaKelas: busBloc.filter.elementAt(index).namaKelas,
+                        );
+                        Navigator.pop(context, busResponseModel);
                       },
                     );
                   },

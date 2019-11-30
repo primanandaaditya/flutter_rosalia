@@ -41,6 +41,8 @@ class Str{
   static const String cekStatus="CEK STATUS";
 
   static const String filterKelas="Cari bus";
+  static const String semuaKelas=" Semua bus";
+  static const String semuaKelasID="";
   static const String filterAgen="Cari agen/kota agen";
 
   static const String filterNoResult="No result";
@@ -50,6 +52,12 @@ class Str{
   static const String filterTime="filterTime";
 
   static const String labelTanggalBerangkat="Tanggal berangkat";
+  static const String labelNaik="Naik dari";
+  static const String labelTurun="Turun/tujuan";
+  static const String jumlahPenumpang="Jumlah penumpang";
+  static const String jenisArmada="Pilih jenis armada";
+  static const String pilihTanggal="Pilih tanggal";
+  static const String booking="Booking";
 
   static var namaHari = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"];
   static var namaBulan=["","Januari", "Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];

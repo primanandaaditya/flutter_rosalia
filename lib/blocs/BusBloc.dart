@@ -4,6 +4,7 @@ import 'dart:convert';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_rosa/helpers/str.dart';
 import 'package:flutter_rosa/models/bus/ListBusModel.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter_rosa/helpers/url.dart';
@@ -60,6 +61,9 @@ class BusBloc extends Bloc<int,String>{
   void createResponse(String response){
     String result = '{"BusResponseModel":' + response + "}";
     listBusModel=ListBusModel.fromJson(json.decode(result));
+
+    //tambah item 'semua armada'
+    listBusModel.busResponseModel.add( BusResponseModel(kelasId: Str.semuaKelasID, namaKelas: Str.semuaKelas) );
     listBusModel.busResponseModel.sort((a,b) => a.namaKelas.compareTo(b.namaKelas));
     filter=listBusModel.busResponseModel;
   }
