@@ -5,6 +5,7 @@ import 'package:flutter_rosa/helpers/util.dart';
 import 'package:flutter_rosa/models/calendar/CalendarIntent.dart';
 import 'package:table_calendar/table_calendar.dart';
 
+
 CalendarController calendarController=CalendarController();
 String teks;
 
@@ -21,6 +22,8 @@ class CalendarUtama extends StatelessWidget {
 class View extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
+
     return Scaffold(
           appBar: CSS().appbarHitam(Str.pilihTanggal, Icons.calendar_today),
           body: Container(
@@ -29,10 +32,10 @@ class View extends StatelessWidget {
             ),
            width: double.infinity,
            height: double.infinity,
-         
+
            child: TableCalendar(
+             locale: 'id_ID',
              startDay: DateTime.now(),
-            
              builders: CalendarBuilders(
                
              ),

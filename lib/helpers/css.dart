@@ -2,6 +2,84 @@ import 'package:flutter/material.dart';
 
 class CSS {
 
+   Container garisLangkah(){
+     return 
+     Container(
+              width: 30,
+              height: 2,
+              color: Colors.white,
+            );
+   }
+
+   Container bulatanLangkah(int langkahKe, int activeIndex){
+     return 
+      Container(
+              child: Center(
+                child: Text(langkahKe.toString(), style: teksPutih(),),
+              ),
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.white),
+                shape: BoxShape.circle,
+                color: (activeIndex==langkahKe)? Colors.green[600]: Colors.black
+              ),
+            );
+   }
+
+   Row getLangkah(int activeIndex){
+    return Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+
+          children: <Widget>[
+
+            //lingkaran pertama
+            //====================================
+            //====================================
+            bulatanLangkah(1, activeIndex),
+
+            //garis pertama
+            //====================================
+            //====================================
+            garisLangkah(),
+
+            //lingkaran kedua
+            //====================================
+            //====================================
+            bulatanLangkah(2, activeIndex),
+
+
+            //garis kedua
+            //====================================
+            //====================================
+            garisLangkah(),
+
+
+            //lingkaran ketiga
+            //====================================
+            //====================================
+            bulatanLangkah(3, activeIndex),
+
+
+             //garis ketiga
+            //====================================
+            //====================================
+            garisLangkah(),
+
+
+            //lingkaran keempat
+            //====================================
+            //====================================
+            bulatanLangkah(4, activeIndex),
+
+
+
+          ],
+
+        );
+  }
+
   AppBar appbarHitam(String judul, IconData icons){
     return AppBar(
         elevation: 3,
@@ -19,9 +97,24 @@ class CSS {
     );
   }
 
+  LinearGradient gradienBiru(){
+    return LinearGradient(
+      begin: Alignment.topCenter,
+      end: Alignment.bottomCenter,
+      colors: [Colors.blueAccent[400],Colors.blueAccent[700]]
+    );
+  }
+
   TextStyle teksPutih(){
     return TextStyle(
       color: Colors.white,
+      fontFamily: 'Muli'
+    );
+  }
+
+  TextStyle teksAbu(){
+    return TextStyle(
+      color: Colors.grey,
       fontFamily: 'Muli'
     );
   }

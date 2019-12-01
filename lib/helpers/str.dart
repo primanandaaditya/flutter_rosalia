@@ -62,5 +62,8 @@ class Str{
   static var namaHari = ["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu","Minggu"];
   static var namaBulan=["","Januari", "Februari","Maret","April","Mei","Juni","Juli","Agustus","September","Oktober","November","Desember"];
 
+  static const String bookingTiket="BOOKING";
+  static const String pesanTiket="PESAN";
+  static const String bayarTiket="BAYAR";
 
 }

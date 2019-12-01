@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rosa/helpers/css.dart';
+import 'package:flutter_rosa/helpers/str.dart';
 import 'package:flutter_rosa/models/agen/ListAgenModel.dart';
 import 'package:flutter_rosa/models/bus/BusResponseModel.dart';
 import 'package:flutter_rosa/models/calendar/CalendarIntent.dart';
@@ -21,6 +23,30 @@ class BookingService{
   static String idNaik="";
   static String idTurun="";
   static String idKelas="";
+
+
+  static balikAsaldanTujuan(){
+
+    String idBalik = idNaik;
+    String tcBalik = tcNaik.text;
+
+    idNaik = idTurun;
+    tcNaik.text = tcTurun.text;
+
+    idTurun = idBalik;
+    tcTurun.text=tcBalik;
+    
+  }
+
+  static List<Step> step(){
+    List<Step> hasil=List<Step>();
+    hasil.add(Step(isActive: true, title: Text("", style: CSS().teksPutih(),), content: Text("data"), subtitle: Text("")));
+    hasil.add(Step(title: Text("", style: CSS().teksPutih(),), content: Text("data"), subtitle: Text("")));
+    hasil.add(Step(title: Text("", style: CSS().teksPutih(),), content: Text("data"), subtitle: Text("")));
+    hasil.add(Step(title: Text("", style: CSS().teksPutih(),), content: Text("data"), subtitle: Text("")));
+
+    return hasil;
+  }
 
   static void tampilkanKalender(BuildContext context) async {
     final CalendarIntent calendarIntent = await Navigator.push(context, MaterialPageRoute(builder: (context) => CalendarUtama()),);
